@@ -1,6 +1,8 @@
-import { decrement, increment } from "./redux/features/counter/counterSlice";
-import { useAppDispatch, useAppSelector } from "./redux/hook";
-const App = () => {
+// import { decrement, increment } from "../redux/features/counter/counterSlice";
+import { decrement, increment } from "../redux/features/counter/counterSlice";
+import { useAppDispatch, useAppSelector } from "../redux/hook";
+
+const CounterPage = () => {
   const dispatch = useAppDispatch();
   const { count } = useAppSelector((state) => state.counter);
   console.log(count);
@@ -10,11 +12,10 @@ const App = () => {
   const handleDecrement = (amount: number) => {
     dispatch(decrement(amount));
   };
-
   return (
-    <>
+    <div>
       <h1 className="text-6xl text-red-600 bg-amber-600 p-6">
-        Counter with Redux From App Component
+        Counter with Redux From Counter Page
       </h1>
       <div className="flex flex-col items-center justify-center h-screen space-y-4">
         <button onClick={() => handleIncrement(5)} className="btn btn-primary">
@@ -24,9 +25,7 @@ const App = () => {
           Increment
         </button>
         <div>
-          <p className="border-2 p-5 my-3 text-2xl text-wrap bg-pink-400">
-            {count}
-          </p>
+          <p className="border-2 p-5 my-3 text-2xl text-wrap bg-orange-400">{count}</p>
         </div>
         <button onClick={() => handleDecrement(1)} className="btn btn-primary">
           Decrement
@@ -35,8 +34,8 @@ const App = () => {
           Decrement By 5
         </button>
       </div>
-    </>
+    </div>
   );
 };
 
-export default App;
+export default CounterPage;
